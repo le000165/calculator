@@ -1,0 +1,132 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-size: cover;
+    background-color: #f1f6f9;
+}
+
+/* ================= MAIN CONTAINER =========== */
+.wrapper {
+    min-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* =================  CONTAINER =========== */
+header {
+    text-align: center;
+    font-family: 'Josefin Slab', serif;
+}
+
+/* ================= CALCULATOR CONTAINER =========== */
+.calculator-container {
+    font-size: 3rem;
+    width: 320px;
+    height: 500px;
+    background-color: #1a1c20;
+    border-radius: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #1a1c20;
+}
+
+/* ================= GRID CONTAINER =========== */
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    min-height: 80%;
+}
+
+/* button item */
+.btn {
+    color: #fafafa;
+    font-size: 2rem;
+    width: 100%;
+    border: 1px solid #1a1c20;
+    background-color: #838383;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:hover {
+    transition: all 0.3s ease-out;
+    background-color: #dfddc7;
+    color: #1a1c20;
+}
+
+
+/* Special zero button taking two column width */
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: stretch;
+    border-bottom-left-radius: 15px;
+}
+
+.btn-right-end {
+    background-color: #f0a500;
+}
+
+.btn-top {
+    background-color: #525252;
+}
+
+.equal-sign {
+    border-bottom-right-radius: 15px;
+}
+
+
+/* ================= GRID CONTAINER =========== */
+.display-container {
+    color: #fafafa;
+    min-height: 80px;
+    border: 1px solid #1a1c20;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #313131;
+}
+
+.display-container p {
+    text-align: right;
+    width: 100%;
+    margin-top: 30px;
+    margin-left: -5px;
+}
+
+/* ================= FOOTER =========== */
+.footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    background-color: #dfddc7;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #323232;
+}
+
+.footer i {
+    font-size: 2.5rem;
+    border-radius: 50%;
+}
+
+.footer i:hover {
+    color: #f1f6f9;
+    background-color: #323232;
+}
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 400px) {
+    .wrapper {
+        min-height: calc(100vh - 60px);
+    }
+}
