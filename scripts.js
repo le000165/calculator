@@ -98,6 +98,8 @@ function updateDisplay(text) {
 
 function clear() {
     displayScreen.textContent = '0';
+    clearButton.style.backgroundColor = '#525252';
+    clearButton.style.color = '#fafafa';
     firstNums = [];
     secondNums = [];
     operator = null;
