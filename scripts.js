@@ -14,11 +14,13 @@ const equalButton = document.querySelector('.equal-sign');
 const clearButton = document.querySelector('.clear');
 const backSpaceButton = document.querySelector('.backspace');
 const displayScreen = document.querySelector('.display-text');
+
 const message = document.querySelector('.message');
 const chechBox = document.querySelector('#checkBox');
 const body = document.getElementsByTagName("body")[0];
 const html = document.getElementsByTagName("html")[0];
 const calculatoContainer = document.querySelector('.calculator-container');
+const footer = document.querySelector('.footer');
 
 let firstNums = [];
 let secondNums = [];
@@ -300,6 +302,7 @@ decimalButton.addEventListener('click', function () {
 chechBox.addEventListener('click', function (e) {
     body.classList.toggle('dark-mode');
     html.classList.toggle('dark-mode');
+    footer.classList.toggle('footer-dark-mode');
     calculatoContainer.classList.toggle('shadow-calculator');
 });
 
