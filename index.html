@@ -20,7 +20,7 @@
     <header>
         <h1>Calculator</h1>
         <h3>This calculator is inspired by The Odin Project (TOP)</h3>
-        <h3>Version: TESTING</h3>
+        <h3 class="message">Message</h3>
     </header>
     <div class="wrapper">
         <div class="calculator-container">
@@ -45,14 +45,19 @@
                 <button data-key="51" class="btn">3</button>
                 <button data-key="88" class="btn btn-right-end operator">x</button>
                 <button data-key="48" class="btn zero">0</button>
-                <button data-key="190" class="btn">.</button>
+                <button data-key="190" class="btn decimal">.</button>
                 <button data-key="13" class="btn btn-right-end equal-sign">=</button>
             </div>
         </div>
-        <div class="footer">
-            <a href="https://github.com/le000165/calculator"><i class="fab fa-github"></i></a>
-            <p>Made by Phong</p>
-        </div>
+        <label class="switch">
+            <input type="checkbox" id="checkBox">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="footer">
+        <a href="https://github.com/le000165/calculator"><i class="fab fa-github"></i></a>
+        <p>Made by Phong</p>
+    </div>
     </div>
 </body>
 

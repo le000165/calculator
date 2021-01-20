@@ -4,12 +4,13 @@ html {
     padding: 0;
     font-family: sans-serif;
     background-size: cover;
-    background-color: #f1f6f9;
+    background-color: #cae4db;
+    color: #00303f;
 }
 
 /* ================= MAIN CONTAINER =========== */
 .wrapper {
-    min-height: 85vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -31,7 +32,7 @@ header {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    border: 1px solid #1a1c20;
+    border: 1px solid #00303f;
 }
 
 /* ================= GRID CONTAINER =========== */
@@ -63,7 +64,6 @@ header {
     color: #1a1c20;
 }
 
-
 /* Special zero button taking two column width */
 .zero {
     grid-column-start: 1;
@@ -83,6 +83,15 @@ header {
     border-bottom-right-radius: 15px;
 }
 
+/* ================= Message container =========== */
+.message {
+    visibility: hidden;
+    display: inline-block;
+    margin: 10px auto;
+    font-size: 1.5rem;
+    color: #ff4646;
+    text-align: center;
+}
 
 /* ================= GRID CONTAINER =========== */
 .display-container {
@@ -92,7 +101,7 @@ header {
     border: 1px solid #1a1c20;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    background-color: #313131;
+    background-color: #121013;
 }
 
 .display-container p {
@@ -102,13 +111,73 @@ header {
     margin-left: -5px;
 }
 
+/* ================= SLIDER BUTTON SWITCH =========== */
+/* The switch - the box around the slider */
+.switch {
+    margin: 0 auto;
+    position: relative;
+    bottom: 50px;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #521477;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #1f024c;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
 /* ================= FOOTER =========== */
 .footer {
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 10px;
-    background-color: #dfddc7;
+    background-color: #cdac81;
+    color: #00303f;
 }
 
 .footer a {
@@ -126,14 +195,40 @@ header {
     background-color: #323232;
 }
 
+.dark-mode {
+    transition: all 0.5s ease-in;
+    background-color: #010101;
+    color: #f0ece2;
+}
+
+.shadow-calculator {
+    -webkit-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
 /* ========= Mobile View ========= */
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+
     .btn {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .calculator-container {
         padding-bottom: 2px;
+    }
+
+    .backspace:hover {
+        color: #fafafa;
+        background-color: #525252;
+    }
+
+    .clear:hover {
+        color: #fafafa;
+        background-color: #525252;
+    }
+
+    .switch {
+        bottom: 20px;
     }
 }
