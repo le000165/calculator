@@ -243,12 +243,16 @@ input:checked+.slider:before {
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 414px) and (max-device-width: 896px) and (-webkit-min-device-pixel-ratio: 2) {
 
+    .wrapper {
+        min-height: 75vh;
+    }
+
     .btn {
         font-size: 1.2rem;
     }
 
     .switch {
-        bottom: 25px;
+        bottom: 40px;
     }
 
 }
@@ -258,10 +262,6 @@ input:checked+.slider:before {
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
 
-    .calculator-container {
-        min-width: 270px;
-        min-height: 450px;
-    }
 
     .wrapper {
         min-height: 70vh;
@@ -293,6 +293,10 @@ input:checked+.slider:before {
         font-size: 1.3rem;
     }
 
+    .wrapper {
+        min-height: 70vh;
+    }
+
     .display-container {
         font-size: 4rem;
     }
@@ -318,12 +322,10 @@ input:checked+.slider:before {
     }
 
     .switch {
-        bottom: 10rem;
+        bottom: 30px;
     }
 
-    .wrapper {
-        min-height: 74vh;
-    }
+
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
