@@ -45,7 +45,8 @@ header {
 
 /* button item */
 .btn {
-    font-size: 1.5rem;
+    display: inline-block;
+    font-size: 2rem;
     color: #fafafa;
     border: 1px solid #1a1c20;
     background-color: #838383;
@@ -215,11 +216,47 @@ input:checked+.slider:before {
 }
 
 /* ========= Mobile View ========= */
+/* iPhone 6, 6+ - 1792x828px at 326ppi */
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
 /* Portrait and Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    .wrapper {
+        min-height: 95vh;
+    }
 
     .btn {
-        font-size: 1.2rem;
+        font-size: 20px;
+    }
+
+    .calculator-container {
+        padding-bottom: 2px;
+    }
+
+    .backspace:hover {
+        color: #fafafa;
+        background-color: #525252;
+    }
+
+    .clear:hover {
+        color: #fafafa;
+        background-color: #525252;
+    }
+
+    .switch {
+        bottom: 25px;
+    }
+}
+
+/* iPhone XR - 1792x828px at 326ppi */
+@media only screen and (device-width : 414px) and (device-height : 896px) and (-webkit-device-pixel-ratio : 2) {
+
+    .wrapper {
+        min-height: 75vh;
+    }
+
+    .btn {
+        font-size: 15px;
     }
 
     .calculator-container {
@@ -238,6 +275,31 @@ input:checked+.slider:before {
 
     .switch {
         bottom: 20px;
+    }
+}
+
+/* Portrait and Landscape iphone X, Xs max*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+    .wrapper {
+        min-height: 75vh;
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+
+    .calculator-container {
+        padding-bottom: 2px;
+    }
+
+    .backspace:hover {
+        color: #fafafa;
+        background-color: #525252;
+    }
+
+    .clear:hover {
+        color: #fafafa;
+        background-color: #525252;
     }
 }
 
