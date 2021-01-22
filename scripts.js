@@ -107,8 +107,8 @@ function updateDisplay(text) {
     } else {
         console.log('display need to handle null');
     }
-    if (displayScreen.textContent.length > 13) {
-        displayScreen.textContent = text.substring(0, 13);
+    if (displayScreen.textContent.length > 11) {
+        displayScreen.textContent = text.substring(0, 11);
     }
 }
 
