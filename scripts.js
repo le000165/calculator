@@ -46,6 +46,7 @@ function multiply(...nums) {
 
 function divide(dividend, divisor) {
     if (0 == divisor) {
+        setMessage('Can not divided by 0');
         return 0;
     }
     let quotient = dividend / divisor;
@@ -80,12 +81,7 @@ function operate(x, y, math) {
             result = multiply(x, y);
             break;
         case '÷':
-            if (y != 0) {
-                result = divide(x, y);
-            } else {
-                result = 0;
-                setMessage('Can not divided by 0');
-            }
+            result = divide(x, y);
             break;
         case '%':
             result = percentage(x, y);
@@ -106,7 +102,10 @@ function updateDisplay(text) {
         }
     }
     if (text !== null) {
-        displayScreen.textContent = text.toString();
+        let parseFloatVal = parseFloat(text); // trim leading zero
+        displayScreen.textContent = parseFloatVal.toString();
+    } else {
+        console.log('display need to handle null');
     }
     if (displayScreen.textContent.length > 13) {
         displayScreen.textContent = text.substring(0, 13);
@@ -146,16 +145,25 @@ function equalSignPressed() {
     }
 }
 
-// deleting 
+/**
+ * deleting the item of either first operand or second operand
+ * when both number length is 0, then call clear to reset the calculator.
+ */
 function backSpace() {
     if (isEqualClicked) {
         clear();
     }
+    // determine which list of number to erase
     if (currentOperand === 'first') {
         firstNums.pop();
-        updateDisplay(getFirstOperand());
+        if (firstNums.length == 0) {
+            clear();
+        } else {
+            updateDisplay(getFirstOperand());
+        }
     } else {
         secondNums.pop();
+        console.log(secondNums.length);
         if (secondNums.length == 0) {
             clear();
         } else {
@@ -163,7 +171,7 @@ function backSpace() {
         }
     }
 }
-// checking if we have the first number
+
 // ======== SETTERS =========
 function setFirstOperand(x) {
     currentOperand = 'first';
@@ -253,15 +261,23 @@ mathButtons.forEach(mathButton => mathButton.addEventListener('click',
                 setFirstOperand(result);
             }
         } else {
-            //when operator is never saved, then initialize it
-            setOperator(e.target.textContent);
+            // setting percentage as special math operation, it still giving the result, even there is only one operand is set 
             if (getOperator() == '%' && getCurrentOperand() != null) {
+                setOperator('%');
                 let result = operate(getFirstOperand(), getSecondOperand(), getOperator());
                 firstNums = [];
                 secondNums = [];
                 setFirstOperand(result);
                 isOperated = true;
+                return;
             }
+            //initilize math button when there is first number, else exit
+            if (getCurrentOperand() != null) {
+                setOperator(e.target.textContent);
+                return;
+            }
+            // clear calculator when there is no number before
+            clear();
         }
     }));
 
@@ -296,8 +312,6 @@ decimalButton.addEventListener('click', function () {
     }
 });
 
-
-
 // --------------- SWITCHER ------------
 chechBox.addEventListener('click', function (e) {
     body.classList.toggle('dark-mode');
@@ -306,11 +320,9 @@ chechBox.addEventListener('click', function (e) {
     calculatoContainer.classList.toggle('shadow-calculator');
 });
 
-
-
 equalButton.addEventListener('click', equalSignPressed);
 clearButton.addEventListener('click', clear);
 backSpaceButton.addEventListener('click', backSpace);
 
-// =================== SANDBOX ===============
+// =================== Pre Construct ===============
 updateDisplay('0');
