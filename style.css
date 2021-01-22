@@ -10,7 +10,7 @@ html {
 
 /* ================= MAIN CONTAINER =========== */
 .wrapper {
-    min-height: 70vh;
+    min-height: calc(70vh + 7rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -115,9 +115,8 @@ header {
 /* ================= SLIDER BUTTON SWITCH =========== */
 /* The switch - the box around the slider */
 .switch {
-    margin: 0 auto;
+    margin: auto auto;
     position: relative;
-    bottom: 50px;
     width: 60px;
     height: 34px;
 }
@@ -276,9 +275,6 @@ input:checked+.slider:before {
         background-color: #525252;
     }
 
-    .switch {
-        margin: auto auto;
-    }
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
@@ -286,10 +282,6 @@ input:checked+.slider:before {
     /* For landscape layouts only */
     .btn {
         font-size: 1.3rem;
-    }
-
-    .switch {
-        bottom: 1.5rem;
     }
 
     .wrapper {
