@@ -2,7 +2,7 @@
  * @desc Calculator project is part of The Odin Project
  *       for learning basic web development
  * @author Phong 
- * date: 2021/xx/xx
+ * date: 2021/01/12
  */
 
 // =================== CONSTANTS, GLOBAL ===============
@@ -232,6 +232,7 @@ numberButtons.forEach(b => b.addEventListener('click',
                 firstNums = [];
                 isOperated = false;
             }
+            console.log('setting first number when there is no operator yet');
             setFirstOperand(e.target.textContent);
         } else {
             setSecondOperand(e.target.textContent);
@@ -241,9 +242,13 @@ numberButtons.forEach(b => b.addEventListener('click',
 // --------------- MATHS ------------
 mathButtons.forEach(mathButton => mathButton.addEventListener('click',
     (e) => {
+        // getting math input
+        const operatorInput = e.target.textContent;
+        // reset the alert message
         setMessage('');
         // when there is an exist operator
         if (getOperator() !== null) {
+            console.log('When getOperator() !== null');
             // when the second number is set, 
             // and when the operator is clicked one more time
             if (getSecondOperand() !== null) {
@@ -253,7 +258,7 @@ mathButtons.forEach(mathButton => mathButton.addEventListener('click',
                 setFirstOperand(result);
                 isOperated = true;
             }
-            setOperator(e.target.textContent);
+            setOperator(operatorInput);
             if (getOperator() == '%' && getCurrentOperand() != null) {
                 let result = operate(getFirstOperand(), getSecondOperand(), '%');
                 firstNums = [];
@@ -261,19 +266,21 @@ mathButtons.forEach(mathButton => mathButton.addEventListener('click',
                 setFirstOperand(result);
             }
         } else {
-            // setting percentage as special math operation, it still giving the result, even there is only one operand is set 
-            if (getOperator() == '%' && getCurrentOperand() != null) {
+            // setting percentage as special math operation
+            // it will still giving the result, even there is only one operand is set 
+            if (operatorInput == '%' && getCurrentOperand() != null) {
                 setOperator('%');
                 let result = operate(getFirstOperand(), getSecondOperand(), getOperator());
+                console.log(`when pressing %, and in the else part of mathButtons,the result is ${result}`);
                 firstNums = [];
                 secondNums = [];
                 setFirstOperand(result);
                 isOperated = true;
-                return;
+                return; //break when done to prevent evaluating next if statement
             }
-            //initilize math button when there is first number, else exit
+            // initilize math button when there is first number, else exit
             if (getCurrentOperand() != null) {
-                setOperator(e.target.textContent);
+                setOperator(operatorInput);
                 return;
             }
             // clear calculator when there is no number before
@@ -312,7 +319,7 @@ decimalButton.addEventListener('click', function () {
     }
 });
 
-// --------------- SWITCHER ------------
+// --------------- SWITCHER for Dark Mode------------
 chechBox.addEventListener('click', function (e) {
     body.classList.toggle('dark-mode');
     html.classList.toggle('dark-mode');
